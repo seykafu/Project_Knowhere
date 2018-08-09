@@ -87,7 +87,7 @@ clock = pygame.time.Clock()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            gameover();
+            gameover()
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 snake.changeDirTo("RIGHT")
