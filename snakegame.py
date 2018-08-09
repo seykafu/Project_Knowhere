@@ -10,14 +10,14 @@ class Snake():
         self.direction = "RIGHT"
         self.changeDirectionTo = self.direction
 
-    def changeDirTo(self, dir):
-        if dir=="RIGHT" and not self.direction=="LEFT":
+    def change_Dir_To(self, dir):
+        if dir== "RIGHT" and not self.direction== "LEFT":
             self.direction = "RIGHT"
-        if dir=="LEFT" and not self.direction=="RIGHT":
+        if dir== "LEFT" and not self.direction== "RIGHT":
             self.direction = "LEFT"
-        if dir=="UP" and not self.direction=="DOWN":
+        if dir== "UP" and not self.direction== "DOWN":
             self.direction = "UP"
-        if dir=="DOWN" and not self.direction=="UP":
+        if dir== "DOWN" and not self.direction== "UP":
             self.direction = "DOWN"
 
     def move(self, foodPos):
@@ -26,9 +26,9 @@ class Snake():
         if self.direction == "LEFT":
             self.position[0] -= 10
         if self.direction == "UP":
-            self.position[0] -= 10
+            self.position[1] -= 10
         if self.direction == "DOWN":
-            self.position[0] += 10
+            self.position[1] += 10
         self.body.insert(0, list(self.position))
         if self.position ==foodPos:
             return 1
@@ -80,26 +80,22 @@ def gameover():
     pygame.quit()
     sys.exit()
 
-WIDTH=600
-HEIGHT=480
-SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
-clock = pygame.time.Clock()
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            gameover()
+            gameover();
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                snake.changeDirTo("RIGHT")
+                snake.change_Dir_To("RIGHT")
                 pygame.display.update()
             if event.key == pygame.K_LEFT:
-                snake.changeDirTo("LEFT")
+                snake.change_Dir_To("LEFT")
                 pygame.display.update()
             if event.key == pygame.K_UP:
-                snake.changeDirTo("UP")
+                snake.change_Dir_To("UP")
                 pygame.display.update()
             if event.key == pygame.K_DOWN:
-                snake.changeDirTo("DOWN")
+                snake.change_Dir_To("DOWN")
                 pygame.display.update()
 
     foodPos = foodSpawner.spawnFood()
